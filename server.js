@@ -1,5 +1,6 @@
 const express = require('express');
 const errorHandler = require('./src/middleware/error');
+const morgan = require('morgan');
 
 //Load env files
 const dotenv = require('dotenv');
@@ -10,6 +11,11 @@ dotenvExpand.expand(dotenv.config({ path: './config/config.env' }));
 const films = require('./src/routes/films');
 
 const app = express();
+
+//Dev logging middleware
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 //Body parser
 app.use(express.json());

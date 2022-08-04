@@ -1,7 +1,8 @@
 const express = require('express');
-const { getListFilms } = require('../controllers/films');
+const { getListFilms, getFilm } = require('../controllers/films');
 const router = express.Router({ mergeParams: true });
 
-router.route('/films').get(getListFilms);
+router.route('/').get(getListFilms);
+router.route('/:id').get(getFilm);
 
 module.exports = router;

@@ -23,7 +23,7 @@ exports.getListFilms = asyncHandler(async (req, res, next) => {
   });
 });
 
-//@desc Get specific film
+//@desc Get specific film by id
 //@route GET /films/:id
 //@access Public
 exports.getFilm = asyncHandler(async (req, res, next) => {

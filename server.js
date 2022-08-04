@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 
 //Mount routes
-app.use(`/api/ombdb`, films);
+app.use(`/api/ombdb/films`, films);
 
 //Middleware error hanlder
 app.use(errorHandler);

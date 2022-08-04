@@ -13,12 +13,11 @@ exports.getListFilms = asyncHandler(async (req, res, next) => {
   if (result.data.Response == 'False') {
     return next(new ErrorResponse(result.data.Error, 400));
   }
-  console.log(result);
 
   res.status(200).json({
     success: true,
     total: Number(result.data.totalResults),
-    page: req.query.p,
+    page: req.query.page,
     count: result.data.Search.length,
     data: result.data.Search,
   });

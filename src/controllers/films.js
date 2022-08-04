@@ -9,7 +9,6 @@ const OMDB_API_URL = `${process.env.BASE_API_URL}/?apikey=${process.env.OMDB_API
 //@route GET /films
 //@access Public
 exports.getListFilms = asyncHandler(async (req, res, next) => {
-  const OMDB_API_URL = `${process.env.BASE_API_URL}/?apikey=${process.env.OMDB_API_KEY}`;
   const result = await axios.get(
     `${OMDB_API_URL}&${createQueryStr(req.query)}`
   );
@@ -28,7 +27,6 @@ exports.getListFilms = asyncHandler(async (req, res, next) => {
 //@route GET /films/:id
 //@access Public
 exports.getFilm = asyncHandler(async (req, res, next) => {
-  console.log(`${OMDB_API_URL}&i=${req.query.id}`);
   const result = await axios.get(`${OMDB_API_URL}&i=${req.params.id}`);
   if (result.data.Response == 'False') {
     return next(new ErrorResponse(result.data.Error, 400));

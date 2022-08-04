@@ -3,7 +3,8 @@ const errorHandler = require('./src/middleware/error');
 
 //Load env files
 const dotenv = require('dotenv');
-dotenv.config({ path: './config/config.env' });
+const dotenvExpand = require('dotenv-expand');
+dotenvExpand.expand(dotenv.config({ path: './config/config.env' }));
 
 //Import routes
 const films = require('./src/routes/films');

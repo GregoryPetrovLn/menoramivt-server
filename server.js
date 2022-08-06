@@ -1,6 +1,7 @@
 const express = require('express');
 const errorHandler = require('./src/middleware/error');
 const morgan = require('morgan');
+const corsPolicy = require('./src/utils/cors');
 
 //Load env files
 const dotenv = require('dotenv');
@@ -12,6 +13,8 @@ const films = require('./src/routes/films');
 
 const app = express();
 
+app.use(corsPolicy);
+
 //Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -21,7 +24,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json());
 
 //Mount routes
-app.use(`/api/ombdb/films`, films);
+app.use(`/api/omdb/films`, films);
 
 //Middleware error hanlder
 app.use(errorHandler);

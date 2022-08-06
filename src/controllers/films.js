@@ -17,7 +17,7 @@ exports.getListFilms = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     success: true,
     total: Number(result.data.totalResults),
-    page: req.query.page,
+    page: Number(req.query.page),
     count: result.data.Search.length,
     data: result.data.Search,
   });
